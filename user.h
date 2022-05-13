@@ -13,10 +13,8 @@ public:
     std::string *email{};
 
     User();
-    User(std::string &csv);
     User(std::string &username, const std::string &password, const std::string &email, const std::string &phoneNumber);
-
-    friend auto operator<<(std::ostream &stream, User &m) -> std::ostream &;
+    bool login(const std::string& pwd) const;
 };
 
 User user_from_csv(const std::string& csv_line);

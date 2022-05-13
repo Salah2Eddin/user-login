@@ -11,12 +11,6 @@ User::User(std::string &un, const std::string &pwd, const std::string &mail, con
 User::User() : username(new std::string), password(new std::string), email(new std::string),
                phoneNumber(new std::string) {}
 
-auto operator<<(std::ostream &stream, User &m) -> std::ostream & {
-    return stream << *m.username << ',' << *m.password << ',' << *m.phoneNumber << ',' << *m.email << "\n";
-}
-
-User::User(std::string &csv) {
-    std::stringstream stream;
-    stream << csv;
-
+bool User::login(const std::string &pwd) const {
+    return pwd == *password;
 }
