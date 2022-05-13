@@ -19,7 +19,7 @@ bool is_valid_email(const std::string &email, const std::vector<std::string>& em
     
     std::regex expr(R"(^(([\w]?[\.]?(?=[^\.]))+@([\w.])+\.[\w]{2,4})$)");
     
-    return std::regex_match(email, expr);;
+    return std::regex_match(email, expr) && !exists;
 }
 
 bool is_valid_password(const std::string &password) {
