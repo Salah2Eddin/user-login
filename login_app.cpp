@@ -158,6 +158,7 @@ void change_password_loop(User &user) {
     }
 
     *user.password = newPassword;
+    save_csv(user);
 }
 
 void user_interface_loop(User &user) {

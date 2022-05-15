@@ -15,6 +15,9 @@ public:
     User();
     User(std::string &username, const std::string &password, const std::string &email, const std::string &phoneNumber);
     bool login(const std::string& pwd) const;
+
+protected:
+    int test;
 };
 
 User user_from_csv(const std::string& csv_line);
