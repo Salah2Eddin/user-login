@@ -19,20 +19,6 @@ void save_csv(const std::map<string, User> &users) {
     csv_s.close();
 }
 
-void save_csv(User user) {
-    // file stream
-    fstream csv_s;
-
-    // opens a csv or creates one.
-    csv_s.open("loginData.csv", ios::app);
-    csv_s << *user.username << ","
-          << *user.password << ","
-          << *user.email << ','
-          << *user.phoneNumber
-          << "\n";
-    csv_s.close();
-}
-
 std::map<string, User> load_csv() {
     std::map<string, User> users;
     // Open file:
