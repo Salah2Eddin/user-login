@@ -8,6 +8,7 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <vector>
 #include <fstream>
 #include "user.h"
 
