@@ -5,8 +5,7 @@ bool main_loop(map<string, User> &users, vector<string> &usernames, vector<strin
     cout << "Welcome to Login App!" << endl;
     cout << "1.Login\n";
     cout << "2.Register\n";
-    cout << "3.Forgot password\n";
-    cout << "4.Exit\n";
+    cout << "3.Exit\n";
     cout << "Enter your choice:";
     cin >> choice;
 
@@ -19,7 +18,7 @@ bool main_loop(map<string, User> &users, vector<string> &usernames, vector<strin
             register_loop(users, usernames, emails);
             break;
         }
-        case 4: {
+        case 3: {
             cout << "Thanks for using Login App";
             return false;
         }

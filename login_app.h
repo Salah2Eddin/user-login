@@ -27,8 +27,6 @@ void register_loop(map<string, User> &users, vector<string> &usernames, vector<s
 
 void change_password_loop(map<string, User> &users, User &user);
 
-void forget_password_loop();
-
 void user_interface_loop(map<string, User> &users, User &user);
 
 string get_password();

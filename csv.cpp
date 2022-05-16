@@ -24,7 +24,7 @@ map<string, User> load_csv() {
 
     // Opening may fail, always check.
     if (!csv_l) {
-        fstream mkfile("loginData.csv", ios::out);
+        fstream makefile("loginData.csv", ios::out);
     }
     // Read the file and load the data:
     string csv_line;
@@ -37,7 +37,6 @@ map<string, User> load_csv() {
         while (getline(sstream, v[i], ',')) {
             i++;
         }
-        cout << v[0] << v[1] << v[2] <<  v[3];
         users[v[0]] = User(v[0], v[1], v[2], v[3]);
     }
     csv_l.close();
