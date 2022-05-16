@@ -14,6 +14,7 @@
 #include "validation.h"
 #include "user.h"
 #include "csv.h"
+#include "encryption.h"
 
 
 using namespace std;
@@ -24,11 +25,11 @@ void login_loop(map<string, User> &users);
 
 void register_loop(map<string, User> &users, vector<string> &usernames, vector<string> &emails);
 
-void change_password_loop();
+void change_password_loop(map<string, User> &users, User &user);
 
 void forget_password_loop();
 
-void user_interface_loop(User &user);
+void user_interface_loop(map<string, User> &users, User &user);
 
 string get_password();
 

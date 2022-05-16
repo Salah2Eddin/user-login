@@ -41,7 +41,7 @@ void login_loop(map<string, User> &users) {
     }
 
     cout << "Password: ";
-    password = get_password();
+    password = cyphering(get_password());
 
     int no_tries = 1;
     while (!users[username].login(password) && no_tries <= 3) {
@@ -52,11 +52,11 @@ void login_loop(map<string, User> &users) {
 
         cout << "Wrong password!" << endl;
         cout << "Password: ";
-        password = get_password();
+        password = cyphering(get_password());
 
         no_tries++;
     }
-    user_interface_loop(users[username]);
+    user_interface_loop(users, users[username]);
     save_csv(users);
 }
 
@@ -122,19 +122,18 @@ void register_loop(map<string, User> &users, vector<string> &usernames, vector<s
         rPassword = get_password();
     }
 
-    User newUser = User(username, password, email, phoneNumber);
+    User newUser = User(username, cyphering(password), email, phoneNumber);
     users[username] = newUser;
     usernames.push_back(username);
     emails.push_back(email);
-
     save_csv(users);
 }
 
-void change_password_loop(User &user) {
+void change_password_loop(map<string, User> &users, User &user) {
     string oldPassword, newPassword, rNewPassword;
 
     cout << "Old password: ";
-    oldPassword = get_password();
+    oldPassword = cyphering(get_password());
 
     if (*user.password != oldPassword) {
         cout << "Wrong password!" << endl;
@@ -142,7 +141,7 @@ void change_password_loop(User &user) {
     }
 
     cout << "New password:";
-    newPassword = get_password();
+    newPassword = cyphering(get_password());
 
     while (!is_valid_password(newPassword)) {
         cout << "Your new password is weak!" << endl;
@@ -150,7 +149,7 @@ void change_password_loop(User &user) {
     }
 
     cout << "Enter the new password again:";
-    rNewPassword = get_password();
+    rNewPassword = cyphering(get_password());
 
     if (newPassword != rNewPassword) {
         cout << "Passwords are not equal" << endl;
@@ -158,10 +157,10 @@ void change_password_loop(User &user) {
     }
 
     *user.password = newPassword;
-    save_csv(user);
+    save_csv(users);
 }
 
-void user_interface_loop(User &user) {
+void user_interface_loop(map<string, User> &users, User &user) {
     int choice = 0;
     cout << "Welcome " << *user.username << endl;
     while (true) {
@@ -171,7 +170,7 @@ void user_interface_loop(User &user) {
         cin >> choice;
         switch (choice) {
             case 1: {
-                change_password_loop(user);
+                change_password_loop(users, user);
                 break;
             }
             case 2: {
